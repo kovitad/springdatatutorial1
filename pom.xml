@@ -1,0 +1,164 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>springdatatutorial1</groupId>
+	<artifactId>springdatatutorial1</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>springdatatutorial1</name>
+	<description>MongoDB + Spring+ JAX-RS tutorial</description>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.core.version>3.2.7.RELEASE</spring.core.version>
+		<slf4j.version>1.6.1</slf4j.version>
+		<log4j.version>1.2.14</log4j.version>
+		<javax.servlet-api.version>2.5</javax.servlet-api.version>
+		<javax.jstl-taglibs.version>1.1.2</javax.jstl-taglibs.version>
+		<jackson.version>1.9.3</jackson.version>
+		<mysql.version>5.1.22</mysql.version>
+		<org.apache.axis2.version>1.6.2</org.apache.axis2.version>
+		<org.apache.struts.version>2.3.16</org.apache.struts.version>
+		<!-- Plugins -->
+		<maven.copy.plugin.version>0.2.3</maven.copy.plugin.version>
+		<maven.compiler.plugin.version>2.3.2</maven.compiler.plugin.version>
+		<maven.apt.plugin.version>1.0</maven.apt.plugin.version>
+		<!-- Testing -->
+		<mockito.version>1.8.5</mockito.version>
+		<junit.version>4.8.2</junit.version>
+		<cxf.version>2.3.9</cxf.version>
+		<mongodb.driver.version>2.7.2</mongodb.driver.version>
+		<spring.data.mongodb.version>1.0.0.RELEASE</spring.data.mongodb.version>
+		<spring-data-jpa.version>1.3.4.RELEASE</spring-data-jpa.version>
+		<query.dsl.version>3.3.1</query.dsl.version>
+	</properties>
+
+	<dependencies>
+		
+
+		<!-- Struts 2 Framework Dependency -->
+		<dependency>
+			<groupId>org.apache.struts</groupId>
+			<artifactId>struts2-spring-plugin</artifactId>
+			<version>${org.apache.struts.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.struts.xwork</groupId>
+			<artifactId>xwork-core</artifactId>
+			<version>${org.apache.struts.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<version>${org.apache.struts.version}</version>
+		</dependency>
+		
+		<!-- Spring Framework Dependency -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>${spring.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.core.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.core.version}</version>
+		</dependency>
+
+		<!-- Spring Data MongoDB -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>${spring.data.mongodb.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- MongoDB Java Driver -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>${mongodb.driver.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Query DSL -->
+		<dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-core</artifactId>
+			<version>${query.dsl.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.mysema.querydsl</groupId>
+			<artifactId>querydsl-mongodb</artifactId>
+			<version>${query.dsl.version}</version>
+		</dependency>
+		
+		<!-- Logging Dependency -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+			<type>jar</type>
+		</dependency>
+
+		<!-- Quality Check -->
+		<dependency>
+			<groupId>net.sf.qualitycheck</groupId>
+			<artifactId>quality-check</artifactId>
+			<version>1.0-RC1</version>
+		</dependency>
+		
+		
+		<!-- The JavaServer Pages Standard Tag Library (JSTL) encapsulates, as 
+			simple tags, core functionality common to many JSP applications. -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>${javax.jstl-taglibs.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>${javax.jstl-taglibs.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<warName>ShoppingCard</warName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.axis2</groupId>
+				<artifactId>axis2-aar-maven-plugin</artifactId>
+				<version>${org.apache.axis2.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
